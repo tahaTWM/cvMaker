@@ -9,7 +9,7 @@ class EditorPage extends StatefulWidget {
 
 class _EditorPageState extends State<EditorPage> {
   var list = [
-    "CONTACT INFORMATION",
+    "CONTACT INFO",
     "OBJECTIVE",
     "EXPERIENCE",
     "EDUCATION",
@@ -84,8 +84,8 @@ class _EditorPageState extends State<EditorPage> {
                       padding: const EdgeInsets.only(left: 10),
                       child: Image(
                         image: AssetImage('asset/${selectedLanguage.name}.png'),
-                        // width: MediaQuery.of(context).size.width / 3,
-                        height: MediaQuery.of(context).size.height / 13,
+                        width: 100,
+                        height: 70,
                       ),
                     ),
                     Container(
@@ -181,44 +181,89 @@ class _EditorPageState extends State<EditorPage> {
               padding: const EdgeInsets.only(left: 0, right: 0),
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height - 450,
+                height: MediaQuery.of(context).size.height / 2.5,
                 padding:
                     EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
-                child: ListView.builder(
-                  itemCount: list.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Padding(
-                      padding: const EdgeInsets.only(top: 5, bottom: 5),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        width: MediaQuery.of(context).size.width - 400,
-                        height: MediaQuery.of(context).size.height - 800,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: SvgPicture.asset(
-                                "asset/Asset 2.svg",
-                                height: 20.0,
-                                width: 20.0,
-                                allowDrawingOutsideViewBox: true,
-                              ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Scrollbar(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      topLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                    child: ListView.builder(
+                      itemCount: list.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                              top: 8, bottom: 8, right: 5),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              boxShadow: <BoxShadow>[
+                                BoxShadow(
+                                  color: Colors.black38,
+                                  blurRadius: 10,
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.white,
                             ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                vertical: 0,
-                                horizontal: 20,
-                              ),
-                              child: Text(list[index]),
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(13),
+                                  child: SvgPicture.asset(
+                                    "asset/Asset ${index + 1}.svg",
+                                    width: 40,
+                                    height: 40,
+                                    color: Colors.red,
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    list[index],
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 26,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.black,
+                                        letterSpacing: 1.1),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.red,
+                ),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height / 14,
+                alignment: Alignment.center,
+                child: Text(
+                  "Ads",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      letterSpacing: 1.1),
                 ),
               ),
             ),
