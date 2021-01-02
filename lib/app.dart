@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'homePage/homepage1.dart';
+import 'editorPage/editorPage.dart';
 
 class App extends StatefulWidget {
   @override
@@ -43,7 +44,10 @@ class _AppState extends State<App> {
         title: Text("MSMAR\nCV Maker"),
         actions: [
           FlatButton.icon(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => EditorPage()));
+            },
             icon: Icon(Icons.store),
             label: Text("More"),
             color: Theme.of(context).primaryColor,

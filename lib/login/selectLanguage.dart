@@ -128,8 +128,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
                     ),
                   ),
                 ),
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginPage())),
+                onTap: () => Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => App())),
               ),
             ],
           ),
