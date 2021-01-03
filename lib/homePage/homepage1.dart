@@ -1,6 +1,7 @@
 import 'package:cvMaker/homePage/cvTemplate.dart';
 import 'package:cvMaker/homePage/interViewQandA.dart';
 import 'package:cvMaker/homePage/jobsHiring.dart';
+import 'package:cvMaker/videosTips/deleteMe.dart';
 import 'package:flutter/material.dart';
 
 class page1 extends StatelessWidget {
@@ -41,20 +42,23 @@ class page1 extends StatelessWidget {
                   ),
                   GestureDetector(
                     child: Container(
-                        padding: EdgeInsets.symmetric(
-                            vertical: 12,
-                            horizontal:
-                                MediaQuery.of(context).size.width * 0.1),
-                        decoration: BoxDecoration(
-                            color: Colors.blue,
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Column(children: [
+                      padding: EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: MediaQuery.of(context).size.width * 0.1),
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
                           Icon(
                             Icons.videocam,
                             size: 30,
                           ),
                           Text("Videos Tips")
-                        ])),
+                        ],
+                      ),
+                    ),
+                    onTap: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> DeleteMe())),
                   ),
                 ],
               ),

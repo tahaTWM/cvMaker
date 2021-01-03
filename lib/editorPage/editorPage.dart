@@ -216,7 +216,9 @@ class _EditorPageState extends State<EditorPage> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(13),
-                                  child: SvgPicture.asset(
+                                  child:
+                                      // Image.asset("Asset ${index + 1}.svg"),
+                                      SvgPicture.asset(
                                     "asset/Asset ${index + 1}.svg",
                                     width: 40,
                                     height: 40,
