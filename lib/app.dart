@@ -27,7 +27,7 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     var children2 = <Widget>[
-      page1(),
+      Page1(),
       Container(
         color: Colors.red,
       ),
@@ -49,7 +49,7 @@ class _AppState extends State<App> {
                   MaterialPageRoute(builder: (context) => EditorPage()));
             },
             icon: Icon(Icons.store),
-            label: Text("More"),
+            label: Text(""),
             color: Theme.of(context).primaryColor,
           ),
         ],

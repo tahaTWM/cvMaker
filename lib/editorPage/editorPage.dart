@@ -20,36 +20,43 @@ class _EditorPageState extends State<EditorPage> {
   List<Language> listLanguage = <Language>[
     new Language("English", "en"),
     new Language("Arabic", "ar"),
-    new Language("Kurdi", "kr"),
   ];
-
+  bool chk = true;
   Language selectedLanguage = new Language("English", "en");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("EDITOR"), centerTitle: true),
+      appBar: AppBar(
+        title: Text("EDITOR"),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Color(0xFFFFC311),
+        brightness: Brightness.light,
+      ),
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
+          padding: EdgeInsets.only(bottom: 8),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 5, left: 2, right: 2, bottom: 20),
+                padding: EdgeInsets.only(top: 0, bottom: 20),
                 child: new LinearPercentIndicator(
-                  width: MediaQuery.of(context).size.width - 4,
+                  width: MediaQuery.of(context).size.width,
                   animation: true,
-                  lineHeight: 20.0,
-                  animationDuration: 2000,
-                  percent: 0.4,
+                  animationDuration: 1000,
+                  lineHeight: 12,
+                  percent: 0.2,
                   center: Text(
-                    "40.0% complete",
-                    style: TextStyle(color: Colors.white),
+                    "20.0%",
+                    style: TextStyle(fontSize: 10),
                   ),
-                  linearStrokeCap: LinearStrokeCap.roundAll,
-                  progressColor: Colors.purple,
-                  backgroundColor: Colors.grey,
+                  linearStrokeCap: LinearStrokeCap.butt,
+                  progressColor: Color(0xFFFE2E62),
+                  backgroundColor: Color(0xFFFCEED0),
                 ),
               ),
               Padding(
@@ -62,7 +69,7 @@ class _EditorPageState extends State<EditorPage> {
                     top: 0, left: 10, right: 10, bottom: 10),
                 child: Container(
                   padding: EdgeInsets.all(5),
-                  width: MediaQuery.of(context).size.width - 20,
+                  width: MediaQuery.of(context).size.width - 10,
                   height: MediaQuery.of(context).size.height / 10,
                   decoration: BoxDecoration(
                     boxShadow: [
@@ -74,48 +81,81 @@ class _EditorPageState extends State<EditorPage> {
                       ),
                     ],
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
+                    // borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Image(
-                          image:
-                              AssetImage('asset/${selectedLanguage.name}.png'),
-                          width: 100,
-                          height: 70,
-                        ),
-                      ),
                       Container(
-                        width: MediaQuery.of(context).size.width - 200,
+                        width: MediaQuery.of(context).size.width - 120,
                         child: DropdownButtonHideUnderline(
                           child: new DropdownButton<Language>(
                             value: selectedLanguage,
+                            icon: Icon(null),
+                            iconSize: 100,
                             onChanged: (Language newValue) {
                               setState(() {
                                 selectedLanguage = newValue;
                               });
                             },
+                            onTap: () {
+                              setState(() {
+                                chk = false;
+                              });
+                            },
                             items: listLanguage.map((Language language) {
                               return new DropdownMenuItem<Language>(
                                 value: language,
-                                child: Padding(
-                                  padding: EdgeInsets.only(left: 20, right: 20),
-                                  child: Text(
-                                    language.name,
-                                    style: TextStyle(
-                                        fontSize: 26,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.black,
-                                        letterSpacing: 1.1),
+                                onTap: () {
+                                  setState(() {
+                                    chk = true;
+                                  });
+                                },
+                                child: Container(
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 5),
+                                        child: Image(
+                                          image: AssetImage(
+                                              'asset/${language.name}.png'),
+                                          width: 80,
+                                          height: 70,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 30),
+                                        child: Text(
+                                          language.name,
+                                          style: TextStyle(
+                                              fontSize: 26,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                              letterSpacing: 1.1),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               );
                             }).toList(),
                           ),
                         ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0),
+                        child: chk == true
+                            ? Icon(
+                                Icons.arrow_drop_down,
+                                size: 80,
+                                color: Color(0xFFFE2E62),
+                              )
+                            : Icon(
+                                Icons.arrow_left_rounded,
+                                size: 80,
+                                color: Color(0xFFFE2E62),
+                              ),
                       ),
                     ],
                   ),
@@ -144,7 +184,7 @@ class _EditorPageState extends State<EditorPage> {
                         ),
                       ],
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                      // borderRadius: BorderRadius.circular(10),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -190,39 +230,39 @@ class _EditorPageState extends State<EditorPage> {
                   child: Scrollbar(
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        topLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(0),
+                        topLeft: Radius.circular(0),
+                        bottomRight: Radius.circular(0),
+                        topRight: Radius.circular(0),
                       ),
                       child: ListView.builder(
                         itemCount: list.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
                             padding: const EdgeInsets.only(
-                                top: 8, bottom: 8, right: 5),
+                                left: 5, top: 8, bottom: 8, right: 5),
                             child: Container(
                               decoration: BoxDecoration(
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
                                     color: Colors.black38,
-                                    blurRadius: 10,
+                                    blurRadius: 7,
                                   ),
                                 ],
-                                borderRadius: BorderRadius.circular(20),
+                                // borderRadius: BorderRadius.circular(20),
                                 color: Colors.white,
                               ),
                               child: Row(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(13),
+                                    padding: const EdgeInsets.all(15),
                                     child:
                                         // Image.asset("Asset ${index + 1}.svg"),
                                         SvgPicture.asset(
                                       "asset/Asset ${index + 1}.svg",
-                                      width: 40,
-                                      height: 40,
-                                      color: Colors.red,
+                                      width: 30,
+                                      height: 30,
+                                      color: Color(0xFFFE2E62),
                                     ),
                                   ),
                                   Padding(
@@ -248,8 +288,8 @@ class _EditorPageState extends State<EditorPage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(
-                    top: 0, bottom: 0, left: 10, right: 10),
+                padding:
+                    const EdgeInsets.only(top: 0, bottom: 0, left: 0, right: 0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
