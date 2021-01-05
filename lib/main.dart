@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         // accentColor: Color(0xFFFFC311),
         primaryColor: Color(0xFFFFC311),
         primaryColorDark: Color(0xFFFFC311),
+        // primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,
