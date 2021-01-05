@@ -2,6 +2,7 @@ import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'homePage/homepage1.dart';
 import 'editorPage/editorPage.dart';
+import 'package:flutter/services.dart';
 
 class App extends StatefulWidget {
   @override
@@ -26,6 +27,10 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
     var children2 = <Widget>[
       Page1(),
       Container(

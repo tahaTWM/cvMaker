@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:flutter/services.dart';
 
 class EditorPage extends StatefulWidget {
   @override
@@ -25,9 +26,13 @@ class _EditorPageState extends State<EditorPage> {
   Language selectedLanguage = new Language("English", "en");
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+    ));
     return Scaffold(
       appBar: AppBar(
-        title: Text("EDITOR"),
+        title: Text("CREATE NEW CV"),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Color(0xFFFFC311),
