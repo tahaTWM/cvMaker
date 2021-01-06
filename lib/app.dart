@@ -25,25 +25,21 @@ class _AppState extends State<App> {
     super.dispose();
   }
 
+  var children2 = <Widget>[
+    Page1(),
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.red,
+      // child: CVTemplates(),
+    ),
+    Container(
+      color: Colors.green,
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ));
-    var children2 = <Widget>[
-      Page1(),
-      Container(
-        color: Colors.red,
-      ),
-      Container(
-        color: Colors.red,
-        // child: CVTemplates(),
-      ),
-      Container(
-        color: Colors.green,
-      ),
-    ];
     return Scaffold(
       appBar: AppBar(
         title: Text("MSMAR\nCV Maker"),

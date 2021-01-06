@@ -1,3 +1,4 @@
+import '../cvPage/cvMakerPage.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +18,11 @@ class CVTemplates extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("CV Templates"),
-                GestureDetector(child: Text("View All..")),
+                GestureDetector(
+                  child: Text("View All.."),
+                  onTap: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CvMakerPage())),
+                ),
               ],
             ),
           ),

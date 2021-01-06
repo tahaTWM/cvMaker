@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../app.dart';
 import '../login/loginPage.dart';
 
@@ -20,6 +21,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          width: MediaQuery.of(context).size.width - 40,
+          margin: EdgeInsets.only(left: 10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -53,9 +56,10 @@ class _SelectLanguageState extends State<SelectLanguage> {
                 padding: const EdgeInsets.only(
                     top: 0, left: 10, right: 10, bottom: 10),
                 child: Container(
-                  padding: EdgeInsets.all(5),
-                  width: MediaQuery.of(context).size.width - 30,
-                  height: MediaQuery.of(context).size.height / 10,
+                  // padding: EdgeInsets.all(5),
+                  margin: EdgeInsets.only(left: 5),
+                  // width: MediaQuery.of(context).size.width - 20,
+                  height: MediaQuery.of(context).size.height / 11.2,
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
@@ -72,7 +76,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width - 120,
+                        width: MediaQuery.of(context).size.width - 150,
                         child: DropdownButtonHideUnderline(
                           child: new DropdownButton<Language>(
                             value: selectedLanguage,

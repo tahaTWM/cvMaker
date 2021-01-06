@@ -26,10 +26,6 @@ class _EditorPageState extends State<EditorPage> {
   Language selectedLanguage = new Language("English", "en");
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-    ));
     return Scaffold(
       appBar: AppBar(
         title: Text("CREATE NEW CV"),
@@ -75,7 +71,7 @@ class _EditorPageState extends State<EditorPage> {
                 child: Container(
                   padding: EdgeInsets.all(5),
                   width: MediaQuery.of(context).size.width - 10,
-                  height: MediaQuery.of(context).size.height / 10,
+                  height: MediaQuery.of(context).size.height / 11.2,
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
