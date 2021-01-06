@@ -21,8 +21,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          width: MediaQuery.of(context).size.width - 40,
-          margin: EdgeInsets.only(left: 10),
+          width: MediaQuery.of(context).size.width / 1.1,
+          margin: EdgeInsets.only(left: 10, right: 0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -54,11 +54,11 @@ class _SelectLanguageState extends State<SelectLanguage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 0, left: 10, right: 10, bottom: 10),
+                    top: 0, left: 10, right: 0, bottom: 10),
                 child: Container(
                   // padding: EdgeInsets.all(5),
                   margin: EdgeInsets.only(left: 5),
-                  // width: MediaQuery.of(context).size.width - 20,
+                  width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 11.2,
                   decoration: BoxDecoration(
                     boxShadow: [
@@ -73,10 +73,12 @@ class _SelectLanguageState extends State<SelectLanguage> {
                     // borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.s,
                     children: [
                       Container(
-                        width: MediaQuery.of(context).size.width - 150,
+                        width: MediaQuery.of(context).size.width / 1.5,
+                        color: Colors.blue,
                         child: DropdownButtonHideUnderline(
                           child: new DropdownButton<Language>(
                             value: selectedLanguage,
@@ -101,10 +103,12 @@ class _SelectLanguageState extends State<SelectLanguage> {
                                   });
                                 },
                                 child: Container(
+                                  color: Colors.red,
                                   child: Row(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(left: 5),
+                                        padding:
+                                            const EdgeInsets.only(left: 10),
                                         child: Image(
                                           image: AssetImage(
                                               'asset/${language.name}.png'),
@@ -113,8 +117,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                                         ),
                                       ),
                                       Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 30),
+                                        padding: const EdgeInsets.only(left: 0),
                                         child: Text(
                                           language.name,
                                           style: TextStyle(
@@ -132,8 +135,8 @@ class _SelectLanguageState extends State<SelectLanguage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 0),
+                      Container(
+                        color: Colors.red,
                         child: chk == true
                             ? Icon(
                                 Icons.arrow_drop_down,

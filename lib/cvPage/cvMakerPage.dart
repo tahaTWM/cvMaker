@@ -46,6 +46,16 @@ class _CvMakerPageState extends State<CvMakerPage> {
             style: TextStyle(
                 fontWeight: FontWeight.bold, fontSize: 28, color: Colors.black),
           ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Image(
+                width: 50,
+                height: 50,
+                image: AssetImage("asset/store.png"),
+              ),
+            )
+          ],
           centerTitle: true,
           elevation: 0,
           backgroundColor: Color(0xFFFFC311),
