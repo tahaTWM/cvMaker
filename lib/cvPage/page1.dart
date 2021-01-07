@@ -7,19 +7,20 @@ class ALL extends StatefulWidget {
 
 class _ALLState extends State<ALL> {
   final ScrollController _controller = ScrollController();
-
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 77),
+          padding: EdgeInsets.only(left: 77),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
                 padding: EdgeInsets.only(left: 0, top: 14),
-                height: MediaQuery.of(context).size.height / 1.27,
+                height: queryData.size.height / 1.29,
                 width: MediaQuery.of(context).size.width / 1.5,
                 child: ListView.builder(
                   controller: _controller,
@@ -62,15 +63,12 @@ class _ALLState extends State<ALL> {
                     );
                   },
                 ),
-              )
+              ),
             ],
           ),
         ),
-        SizedBox(
-          height: 2.5,
-        ),
         Container(
-          height: MediaQuery.of(context).size.height / 16.8,
+          height: MediaQuery.of(context).size.height / 15.2,
           width: MediaQuery.of(context).size.width,
           child: Text("ADS"),
           color: Colors.pink,

@@ -12,10 +12,12 @@ dependencies:
     sdk: flutter
   bottom_navy_bar: ^5.6.0
   cupertino_icons: ^1.0.0
+  flutter_local_notifications: ^3.0.2
   flutter_svg: null
   font_awesome_flutter: ^8.11.0
   lite_rolling_switch: ^0.1.1
   percent_indicator: ^2.1.9
+  responsive_widgets: ^2.0.1
 
 dev_dependencies:
   flutter_test:
