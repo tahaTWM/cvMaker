@@ -78,7 +78,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width / 1.5,
-                        color: Colors.blue,
+                        // color: Colors.blue,
                         child: DropdownButtonHideUnderline(
                           child: new DropdownButton<Language>(
                             value: selectedLanguage,
@@ -103,7 +103,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                                   });
                                 },
                                 child: Container(
-                                  color: Colors.red,
+                                  // color: Colors.red,
                                   child: Row(
                                     children: [
                                       Padding(
@@ -136,7 +136,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                         ),
                       ),
                       Container(
-                        color: Colors.red,
+                        // color: Colors.red,
                         child: chk == true
                             ? Icon(
                                 Icons.arrow_drop_down,
