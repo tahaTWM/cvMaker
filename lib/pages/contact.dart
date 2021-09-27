@@ -1,4 +1,5 @@
-import 'package:cvmaker/main.dart';
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:email_validator/email_validator.dart';
@@ -75,7 +76,7 @@ class _ContactState extends State<Contact> {
           title: Text("Let's get started"),
           centerTitle: true,
           elevation: 0,
-          backgroundColor: Colors.cyan[400],
+          backgroundColor: Color(0xFF73AEF5),
           brightness: Brightness.light,
           toolbarHeight: 40,
           shape: RoundedRectangleBorder(
@@ -103,7 +104,6 @@ class _ContactState extends State<Contact> {
                 padding: const EdgeInsets.all(8.0),
                 child: Theme(
                   child: TextField(
-                    
                     textAlign:
                         cklangauge == false ? TextAlign.start : TextAlign.end,
                     maxLength: 40,
@@ -117,8 +117,9 @@ class _ContactState extends State<Contact> {
                     },
                     controller: firstnameController,
                     decoration: InputDecoration(
-                   
-                      icon: Icon(Icons.person,),
+                      icon: Icon(
+                        Icons.person,
+                      ),
                       hintText: cklangauge == false
                           ? 'Enter your first name.'
                           : '.ادخال الاسم الاول',
@@ -129,12 +130,12 @@ class _ContactState extends State<Contact> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 1.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 1.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 2.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       ),
                     ),
@@ -172,12 +173,12 @@ class _ContactState extends State<Contact> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 1.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 1.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 2.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       ),
                     ),
@@ -208,12 +209,12 @@ class _ContactState extends State<Contact> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 1.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 1.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 2.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       ),
                     ),
@@ -261,12 +262,12 @@ class _ContactState extends State<Contact> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 1.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 1.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.pink[400], width: 2.0),
+                            BorderSide(color: Color(0xFF61A4F1), width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       ),
                     ),
@@ -298,7 +299,7 @@ class _ContactState extends State<Contact> {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Material(
                   elevation: 5.0,
-                  color: Colors.pink[400],
+                  color: Color(0xFF398AE5),
                   borderRadius: BorderRadius.circular(30.0),
                   child: MaterialButton(
                     onPressed: () {
