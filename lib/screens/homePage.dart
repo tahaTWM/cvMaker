@@ -6,6 +6,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/services.dart';
 import '../pages/contact.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../pages/experience.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -21,6 +22,14 @@ class _MyHomePageState extends State<MyHomePage> {
     // print(_pref.getString("lan"));
   }
 
+  perc() async {
+    SharedPreferences _pref = await SharedPreferences.getInstance();
+    setState(() {
+      per = _pref.getDouble("per") ?? 0.0;
+    });
+  }
+
+  double per = 0.0;
   getlangauge() async {
     // print("getting");
     SharedPreferences _pref = await SharedPreferences.getInstance();
@@ -103,23 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Column(
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(top: 0, bottom: 20),
-                    child: new LinearPercentIndicator(
-                      width: MediaQuery.of(context).size.width * 1,
-                      animation: true,
-                      animationDuration: 1000,
-                      lineHeight: 12,
-                      percent: 0.3,
-                      center: Text(
-                        "20.0%",
-                        style: TextStyle(fontSize: 10),
-                      ),
-                      linearStrokeCap: LinearStrokeCap.butt,
-                      progressColor: Colors.blue[600],
-                      backgroundColor: Color(0xFFFCEED0),
-                    ),
-                  ),
+                  linerprecent(context),
 
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -368,8 +361,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   Scrollbar(
                     child: Container(
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 15, horizontal: 8),
+                      height: MediaQuery.of(context).size.height * 0.575,
+                      margin: const EdgeInsets.symmetric(horizontal: 8),
                       padding: const EdgeInsets.symmetric(
                           vertical: 10, horizontal: 5),
                       // height: MediaQuery.of(context).size.height / 1.9,
@@ -391,22 +384,32 @@ class _MyHomePageState extends State<MyHomePage> {
                                   case 0:
                                     {
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Contact()));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Contact(),
+                                        ),
+                                      );
                                     }
                                     break;
                                   case 1:
                                     {
                                       Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Objective()));
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Objective(),
+                                        ),
+                                      );
                                     }
                                     break;
                                   case 2:
-                                    {}
+                                    {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => Experience(),
+                                        ),
+                                      );
+                                    }
                                     break;
                                   case 3:
                                     {}
@@ -509,6 +512,27 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Padding linerprecent(BuildContext context) {
+    perc();
+    return Padding(
+      padding: EdgeInsets.only(top: 0, bottom: 20),
+      child: new LinearPercentIndicator(
+        width: MediaQuery.of(context).size.width * 1,
+        animation: true,
+        animationDuration: 1000,
+        lineHeight: 12,
+        percent: per,
+        center: Text(
+          "${(per * 100).round()}%",
+          style: TextStyle(fontSize: 10),
+        ),
+        linearStrokeCap: LinearStrokeCap.roundAll,
+        progressColor: Colors.blue[600],
+        backgroundColor: Color(0xFFFCEED0),
       ),
     );
   }

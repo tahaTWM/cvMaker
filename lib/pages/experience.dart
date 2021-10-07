@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-class Objective extends StatefulWidget {
+class Experience extends StatefulWidget {
   @override
-  _ObjectiveState createState() => _ObjectiveState();
+  _ExperienceState createState() => _ExperienceState();
 }
 
-class _ObjectiveState extends State<Objective> {
+class _ExperienceState extends State<Experience> {
     bool cklangauge = false;
   lang() async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
@@ -34,7 +34,7 @@ class _ObjectiveState extends State<Objective> {
       key: _formKey,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Objective"),
+          title:cklangauge==false? Text("Experience"):Text("خبرة"),
         ),
         body: ListView(
           children: [
@@ -53,8 +53,8 @@ class _ObjectiveState extends State<Objective> {
                     decoration: InputDecoration(
                       icon: Icon(Icons.person),
                       hintText: cklangauge == false
-                          ? 'what is your objective'
-                          : 'مواضيع عامة',
+                          ? 'Experience'
+                          : 'خبرات',
                       contentPadding: EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 20.0),
                       border: OutlineInputBorder(

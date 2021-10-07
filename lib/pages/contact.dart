@@ -24,20 +24,35 @@ class _ContactState extends State<Contact> {
     });
   }
 
+  List list = [];
+  bool f;
+  bool l;
+  bool e;
+  bool ph;
+  // chkcont() async {
+  //   SharedPreferences _pref = await SharedPreferences.getInstance();
+  //   _pref.setInt("chknum", chknum.length);
+  // }
+
   contact(
       String firstname, String lastname, String email, String phonenum) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
+    double per = _pref.getDouble("per") ?? 0.0;
+
+    bool w;
     if (firstname == null) {
       return null;
     } else {
       _pref.setString("firstname", firstname);
+      //  _pref.setDouble("per", per + 0.1);
     }
 
-    if (lastname == null) {
+    if (_pref.getString("lastname") == null) {
       return null;
     } else {
       _pref.setString("lastname", lastname);
     }
+
     if (phonenum == null) {
       return null;
     } else {
@@ -48,11 +63,15 @@ class _ContactState extends State<Contact> {
     } else {
       _pref.setString("email", email);
     }
-    print(cklangauge);
-    print(_pref.getString("firstname"));
-    print(_pref.getString("lastname"));
-    print(_pref.getString("email"));
-    print(_pref.getString("phonenum"));
+    // print(_pref.getString("firstname"));
+    // print(_pref.getString("lastname"));
+    // print(_pref.getString("email"));
+    // print(_pref.getString("phonenum"));
+    // print(_pref.getDouble("per"));
+
+    print(firstname + "-" + lastname + "-" + email + "-" + phonenum);
+    print(f);
+    print(per);
   }
 
   @override
@@ -73,7 +92,8 @@ class _ContactState extends State<Contact> {
       key: _formKey,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Let's get started"),
+          title:
+              cklangauge == false ? Text("Let's get started") : Text("لنبدأ"),
           centerTitle: true,
           elevation: 0,
           backgroundColor: Color(0xFF73AEF5),
@@ -254,7 +274,7 @@ class _ContactState extends State<Contact> {
                       contentPadding: EdgeInsets.symmetric(
                           vertical: 10.0, horizontal: 20.0),
                       hintText: cklangauge == false
-                          ? "Enter your phone nummber"
+                          ? "Enter your phone number"
                           : ".ادخل رقم الهاتف",
                       icon: Icon(Icons.phone),
                       border: OutlineInputBorder(
@@ -308,6 +328,9 @@ class _ContactState extends State<Contact> {
                           lastnameController.text.toString(),
                           emailController.text.toString(),
                           phonenumController.text.toString());
+                      // SharedPreferences sharedPreferences =
+                      //     await SharedPreferences.getInstance();
+                      // sharedPreferences.clear();
                     },
                     minWidth: double.infinity,
                     height: 42.0,

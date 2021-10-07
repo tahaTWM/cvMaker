@@ -15,10 +15,10 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: null
-  google_sign_in: ^5.1.1
+  google_sign_in: 
   lite_rolling_switch: null
   percent_indicator: null
-  provider: ^6.0.1
+  provider: 
   shared_preferences: any
 
 dev_dependencies:
