@@ -34,7 +34,7 @@ class _ContactState extends State<Contact> {
       String firstname, String lastname, String email, String phonenum) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     double per = _pref.getDouble("per") ?? 0.0;
-    int x;
+
     if (firstname.isNotEmpty) {
       _pref.setString("firstname", firstname);
       list.add(1);
@@ -89,7 +89,7 @@ class _ContactState extends State<Contact> {
         _pref.setDouble("per", per - 0.1);
       }
     }
-
+    
     // print(_pref.getString("firstname"));
     // print(_pref.getString("lastname"));
     // print(_pref.getString("email"));

@@ -39,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 physics: AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.symmetric(
                   horizontal: 40.0,
-                  vertical: 100.0,
+                  vertical: MediaQuery.of(context).size.height * 0.044,
                 ),
                 child: !loginOrRegister ? login() : register(),
               ),
@@ -154,37 +154,40 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildConfiromPasswordTF() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text(
-          'Confirm Password',
-          style: kLabelStyle,
-        ),
-        SizedBox(height: 10.0),
-        Container(
-          alignment: Alignment.centerLeft,
-          decoration: kBoxDecorationStyle,
-          height: 60.0,
-          child: TextFormField(
-            obscureText: true,
-            style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'OpenSans',
-            ),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.only(top: 14.0),
-              prefixIcon: Icon(
-                Icons.lock,
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.14,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Confirm Password',
+            style: kLabelStyle,
+          ),
+          SizedBox(height: 10.0),
+          Container(
+            alignment: Alignment.centerLeft,
+            decoration: kBoxDecorationStyle,
+            height: 60.0,
+            child: TextFormField(
+              obscureText: true,
+              style: TextStyle(
                 color: Colors.white,
+                fontFamily: 'OpenSans',
               ),
-              hintText: 'Confirm your Password',
-              hintStyle: kHintTextStyle,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14.0),
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                ),
+                hintText: 'Confirm your Password',
+                hintStyle: kHintTextStyle,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

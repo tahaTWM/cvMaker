@@ -105,8 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          padding: EdgeInsets.only(top: 10),
+          height: MediaQuery.of(context).size.height * 9,
+          padding: EdgeInsets.only(top: 2),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 0, left: 10, right: 2, bottom: 5),
+                            top: 0, left: 10, right: 2, bottom: 0),
                         child: Text("CV Language"),
                       ),
                     ],
@@ -229,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Container(
                       padding: EdgeInsets.all(5),
                       width: MediaQuery.of(context).size.width - 10,
-                      height: MediaQuery.of(context).size.height / 11.2,
+                      height: MediaQuery.of(context).size.height / 14,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
