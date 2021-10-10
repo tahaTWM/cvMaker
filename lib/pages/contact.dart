@@ -25,52 +25,80 @@ class _ContactState extends State<Contact> {
   }
 
   List list = [];
-  bool f;
-  bool l;
-  bool e;
-  bool ph;
-  // chkcont() async {
-  //   SharedPreferences _pref = await SharedPreferences.getInstance();
-  //   _pref.setInt("chknum", chknum.length);
-  // }
+  // bool f;
+  // bool l;
+  // bool e;
+  // bool ph;
 
   contact(
       String firstname, String lastname, String email, String phonenum) async {
     SharedPreferences _pref = await SharedPreferences.getInstance();
     double per = _pref.getDouble("per") ?? 0.0;
-
-    bool w;
-    if (firstname == null) {
-      return null;
-    } else {
+    int x;
+    if (firstname.isNotEmpty) {
       _pref.setString("firstname", firstname);
-      //  _pref.setDouble("per", per + 0.1);
+      list.add(1);
+    } else {
+      list.remove(1);
     }
 
-    if (_pref.getString("lastname") == null) {
-      return null;
-    } else {
+    if (lastname.isNotEmpty) {
       _pref.setString("lastname", lastname);
+      list.add(2);
+    } else {
+      list.remove(2);
     }
 
-    if (phonenum == null) {
-      return null;
-    } else {
+    if (phonenum.isNotEmpty) {
       _pref.setString("phonenum", phonenum);
-    }
-    if (email == null) {
-      return null;
+      list.add(3);
     } else {
-      _pref.setString("email", email);
+      list.remove(3);
     }
+
+    if (email.isNotEmpty) {
+      _pref.setString("email", email);
+      list.add(4);
+    } else {
+      list.remove(4);
+    }
+
+    if (list.contains(1) == true) {
+      _pref.setDouble("per", per + 0.1);
+    } else {
+      if (per != 0) {
+        _pref.setDouble("per", per - 0.1);
+      }
+    }
+    if (list.contains(2) == true) {
+      _pref.setDouble("per", per + 0.1);
+
+      if (per != 0) {
+        _pref.setDouble("per", per - 0.1);
+      }
+    }
+    if (list.contains(3) == true) {
+      _pref.setDouble("per", per + 0.1);
+      if (per != 0) {
+        _pref.setDouble("per", per - 0.1);
+      }
+    }
+    if (list.contains(4) == true) {
+      _pref.setDouble("per", per + 0.1);
+      if (per != 0) {
+        _pref.setDouble("per", per - 0.1);
+      }
+    }
+
     // print(_pref.getString("firstname"));
     // print(_pref.getString("lastname"));
     // print(_pref.getString("email"));
     // print(_pref.getString("phonenum"));
     // print(_pref.getDouble("per"));
-
+    print(list);
+    print(list.contains(1));
     print(firstname + "-" + lastname + "-" + email + "-" + phonenum);
-    print(f);
+
     print(per);
   }
 
@@ -128,13 +156,13 @@ class _ContactState extends State<Contact> {
                         cklangauge == false ? TextAlign.start : TextAlign.end,
                     maxLength: 40,
                     autofocus: true,
-                    onEditingComplete: () {
-                      contact(
-                          firstnameController.text.toString(),
-                          lastnameController.text.toString(),
-                          emailController.text.toString(),
-                          phonenumController.text.toString());
-                    },
+                    // onEditingComplete: () {
+                    //   contact(
+                    //       firstnameController.text.toString(),
+                    //       lastnameController.text.toString(),
+                    //       emailController.text.toString(),
+                    //       phonenumController.text.toString());
+                    // },
                     controller: firstnameController,
                     decoration: InputDecoration(
                       icon: Icon(
@@ -173,13 +201,13 @@ class _ContactState extends State<Contact> {
                         cklangauge == false ? TextAlign.start : TextAlign.end,
                     maxLength: 40,
                     autofocus: true,
-                    onEditingComplete: () {
-                      contact(
-                          firstnameController.text.toString(),
-                          lastnameController.text.toString(),
-                          emailController.text.toString(),
-                          phonenumController.text.toString());
-                    },
+                    // onEditingComplete: () {
+                    //   contact(
+                    //       firstnameController.text.toString(),
+                    //       lastnameController.text.toString(),
+                    //       emailController.text.toString(),
+                    //       phonenumController.text.toString());
+                    // },
                     controller: lastnameController,
                     decoration: InputDecoration(
                       icon: Icon(Icons.person),
@@ -246,14 +274,14 @@ class _ContactState extends State<Contact> {
                         return 'the text feild is empty';
                       return null;
                     },
-                    onFieldSubmitted: (_) {
-                      contact(
-                          firstnameController.text.toString(),
-                          lastnameController.text.toString(),
-                          emailController.text.toString(),
-                          phonenumController.text.toString());
-                      _formKey.currentState.validate();
-                    },
+                    // onFieldSubmitted: (_) {
+                    //   contact(
+                    //       firstnameController.text.toString(),
+                    //       lastnameController.text.toString(),
+                    //       emailController.text.toString(),
+                    //       phonenumController.text.toString());
+                    //   _formKey.currentState.validate();
+                    // },
                   ),
                   data: Theme.of(context).copyWith(
                     primaryColor: Colors.pink,
@@ -291,15 +319,15 @@ class _ContactState extends State<Contact> {
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                       ),
                     ),
-                    validator: (value) {
-                      if (value.isNotEmpty) {
-                        if (value.toString().length > 20)
-                          return ' the value must be less than 20';
-                      } else {
-                        return 'the text feild is empty';
-                      }
-                      return null;
-                    },
+                    // validator: (value) {
+                    //   if (value.isNotEmpty) {
+                    //     if (value.toString().length > 20)
+                    //       return ' the value must be less than 20';
+                    //   } else {
+                    //     return 'the text feild is empty';
+                    //   }
+                    //   return null;
+                    // },
                     onFieldSubmitted: (_) {
                       contact(
                           firstnameController.text.toString(),
