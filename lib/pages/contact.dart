@@ -25,10 +25,6 @@ class _ContactState extends State<Contact> {
   }
 
   List list = [];
-  // bool f;
-  // bool l;
-  // bool e;
-  // bool ph;
 
   contact(
       String firstname, String lastname, String email, String phonenum) async {
@@ -36,15 +32,37 @@ class _ContactState extends State<Contact> {
     double per = _pref.getDouble("per") ?? 0.0;
 
     if (firstname.isNotEmpty) {
-      _pref.setString("firstname", firstname);
-      list.add(1);
-    } else {
-      list.remove(1);
+      // _pref.setString("firstname", firstname);
+      if (_pref.getString("firstname") != firstname) {
+        _pref.setString("firstname", firstname);
+      }
+    }
+    if (firstname.isEmpty) {
+      if (_pref.getString("firstname").isNotEmpty) {
+        list.remove(1);
+        _pref.remove("firstname");
+      }
+    }
+    if (firstname.isNotEmpty) {
+      if (_pref.getString("firstname").isEmpty) {
+        _pref.setString("firstname", firstname);
+        if (list.contains(1) != false) {
+          list.add(1);
+        }
+      }
+    }
+    if (firstname.isEmpty) {
+      if (_pref.getString("firstname").isEmpty) {
+        return null;
+      }
     }
 
     if (lastname.isNotEmpty) {
       _pref.setString("lastname", lastname);
       list.add(2);
+      if (list.contains(2) == false) {
+        list.add(2);
+      }
     } else {
       list.remove(2);
     }
@@ -52,6 +70,9 @@ class _ContactState extends State<Contact> {
     if (phonenum.isNotEmpty) {
       _pref.setString("phonenum", phonenum);
       list.add(3);
+      if (list.contains(3) == false) {
+        list.add(3);
+      }
     } else {
       list.remove(3);
     }
@@ -59,6 +80,9 @@ class _ContactState extends State<Contact> {
     if (email.isNotEmpty) {
       _pref.setString("email", email);
       list.add(4);
+      if (list.contains(4) == false) {
+        list.add(4);
+      }
     } else {
       list.remove(4);
     }
@@ -66,40 +90,41 @@ class _ContactState extends State<Contact> {
     if (list.contains(1) == true) {
       _pref.setDouble("per", per + 0.1);
     } else {
-      if (per != 0) {
+      if (per > 0) {
         _pref.setDouble("per", per - 0.1);
       }
     }
     if (list.contains(2) == true) {
       _pref.setDouble("per", per + 0.1);
 
-      if (per != 0) {
+      if (per > 0) {
         _pref.setDouble("per", per - 0.1);
       }
     }
     if (list.contains(3) == true) {
       _pref.setDouble("per", per + 0.1);
-      if (per != 0) {
+      if (per > 0) {
         _pref.setDouble("per", per - 0.1);
       }
     }
     if (list.contains(4) == true) {
       _pref.setDouble("per", per + 0.1);
-      if (per != 0) {
+      if (per > 0) {
         _pref.setDouble("per", per - 0.1);
       }
     }
-    
-    // print(_pref.getString("firstname"));
-    // print(_pref.getString("lastname"));
-    // print(_pref.getString("email"));
-    // print(_pref.getString("phonenum"));
+    if (firstname.isNotEmpty) {
+      _pref.setString("firstname", firstname);
+    }
+    print(_pref.getString("firstname"));
+    print(_pref.getString("lastname"));
+    print(_pref.getString("email"));
+    print(_pref.getString("phonenum"));
     // print(_pref.getDouble("per"));
-    print(list);
-    print(list.contains(1));
-    print(firstname + "-" + lastname + "-" + email + "-" + phonenum);
 
-    print(per);
+    // print(firstname + "-" + lastname + "-" + email + "-" + phonenum);
+
+    print("per" + _pref.getDouble("per").toString());
   }
 
   @override
